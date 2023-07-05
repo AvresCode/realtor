@@ -18,7 +18,7 @@ export default function Header() {
           <img
             src="./realestate.png"
             alt="home"
-            className=" h-20 cursor-pointer rounded-md"
+            className=" h-16 cursor-pointer rounded-md"
             onClick={() => navigate('/')}
           />
         </div>
