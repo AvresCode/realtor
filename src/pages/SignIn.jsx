@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -81,7 +82,7 @@ export default function SignIn() {
             </div>
             <button
               type="submit"
-              className="w-full bg-violet-700 text-white py-3 px-6 text-sm font-semibold rounded shadow-md uppercase hover:bg-violet-800 transition duration-150 ease-in-out hover:shadow-lg active:bg-violet-900"
+              className="w-full bg-violet-700  text-white py-3 px-6 text-sm font-semibold rounded shadow-md uppercase hover:bg-violet-800 transition duration-150 ease-in-out hover:shadow-lg active:bg-violet-900"
             >
               Sign in
             </button>
@@ -90,6 +91,7 @@ export default function SignIn() {
               OR
             </p>
             {/* </div> */}
+            <OAuth />
           </form>
         </div>
       </div>
