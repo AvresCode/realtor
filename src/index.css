@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  background-color: #faf6ff;
+  /* background-color: #faf6ff; */
+  @apply bg-gradient-to-r from-violet-100 to-orange-50;
 }
