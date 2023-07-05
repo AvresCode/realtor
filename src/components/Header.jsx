@@ -23,9 +23,9 @@ export default function Header() {
           />
         </div>
         <div>
-          <ul className="flex space-x-10">
+          <ul className="flex space-x-10 text-gray-500">
             <li
-              className={`font-semibold text-gray-500 py-3 cursor-pointer ${
+              className={`font-semibold py-3 cursor-pointer ${
                 pathMatchRoute('/') &&
                 'border-b-[3px] border-b-purple-400 text-black'
               }`}
@@ -34,7 +34,7 @@ export default function Header() {
               Home
             </li>
             <li
-              className={`font-semibold text-gray-500 py-3 cursor-pointer ${
+              className={`font-semibold  py-3 cursor-pointer ${
                 pathMatchRoute('/offers') &&
                 'border-b-[3px] border-b-purple-400 text-black'
               }`}
@@ -43,7 +43,7 @@ export default function Header() {
               Offers
             </li>
             <li
-              className={`font-semibold text-gray-500  py-3 cursor-pointer ${
+              className={`font-semibold py-3 cursor-pointer ${
                 pathMatchRoute('/sign-in') &&
                 'border-b-[3px]  border-b-purple-400 text-black'
               }`}
