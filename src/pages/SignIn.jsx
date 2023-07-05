@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -59,6 +60,36 @@ export default function SignIn() {
                 />
               )}
             </div>
+            <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
+              <p>
+                Don't have an account?{' '}
+                <Link
+                  to="/sign-up"
+                  className="text-red-500 hover:text-red-600 ml-1 transition duration-200 ease-in-out"
+                >
+                  Register
+                </Link>
+              </p>
+              <p>
+                <Link
+                  to="/forgot-password"
+                  className="text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out"
+                >
+                  Forgot password
+                </Link>
+              </p>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-violet-700 text-white py-3 px-6 text-sm font-semibold rounded shadow-md uppercase hover:bg-violet-800 transition duration-150 ease-in-out hover:shadow-lg active:bg-violet-900"
+            >
+              Sign in
+            </button>
+            {/* <div className="flex items-center  my-5 before:flex-1 before:border-t before:border-gray-700 after:flex-1 after:border-t after:border-gray-700"> */}
+            <p className="font-semibold text-center flex items-center gap-4 my-6 before:flex-1 before:border-t before:border-gray-700 after:flex-1 after:border-t after:border-gray-700">
+              OR
+            </p>
+            {/* </div> */}
           </form>
         </div>
       </div>
