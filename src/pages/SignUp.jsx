@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import OAuth from '../components/OAuth';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { serverTimestamp } from 'firebase/firestore';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -40,7 +41,10 @@ export default function SignUp() {
       await updateProfile(auth.currentUser, { displayName: name });
       // OR //await updateProfile(user, { displayName: name });
 
-      console.log('user:', user);
+      //remove password and add timestamp
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
     } catch (error) {
       console.log('error:', error);
     }
