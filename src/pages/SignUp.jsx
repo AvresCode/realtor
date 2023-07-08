@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import OAuth from '../components/OAuth';
+import { auth } from '../firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -23,6 +25,26 @@ export default function SignUp() {
     setShowpassword((prevState) => !prevState);
   }
 
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+      // set name as displayName
+      await updateProfile(auth.currentUser, { displayName: name });
+      // OR //await updateProfile(user, { displayName: name });
+
+      console.log('user:', user);
+    } catch (error) {
+      console.log('error:', error);
+    }
+  }
   return (
     <section>
       <h1 className="text-center text-2xl font-bold pt-10"> Sign Up </h1>
@@ -35,7 +57,7 @@ export default function SignUp() {
           />
         </div>
         <div className="w-full md:w-[60%] lg:w-[40%] lg:ml-20 ">
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="text"
               id="name"
