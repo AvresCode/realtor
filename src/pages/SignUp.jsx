@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import OAuth from '../components/OAuth';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { serverTimestamp } from 'firebase/firestore';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -45,6 +45,9 @@ export default function SignUp() {
       const formDataCopy = { ...formData };
       delete formDataCopy.password;
       formDataCopy.timestamp = serverTimestamp();
+
+      //add data to firestore
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
     } catch (error) {
       console.log('error:', error);
     }
