@@ -6,6 +6,7 @@ import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -54,7 +55,8 @@ export default function SignUp() {
       //
       navigate('/');
     } catch (error) {
-      console.log('error:', error);
+      // toast.error('Something went wrong with registration');
+      toast.error(error.message);
     }
   }
   return (
