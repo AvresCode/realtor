@@ -3,8 +3,10 @@ import { toast } from 'react-toastify';
 import { auth, db } from '../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router';
 
 export default function OAuth() {
+  const navigate = useNavigate();
   async function onGoogleClick() {
     try {
       const provider = new GoogleAuthProvider();
@@ -26,6 +28,8 @@ export default function OAuth() {
           timestamp: serverTimestamp(),
         });
       }
+
+      navigate('/');
     } catch (error) {
       toast.error('Could not authorize with Google');
     }
