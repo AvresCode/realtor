@@ -5,6 +5,7 @@ import OAuth from '../components/OAuth';
 import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ export default function SignUp() {
   });
   const { name, email, password } = formData;
   const [showPassword, setShowpassword] = useState(false);
+  const navigate = useNavigate();
 
   function onChange(e) {
     setFormData((prevState) => ({
@@ -48,6 +50,9 @@ export default function SignUp() {
 
       //add data to firestore
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
+
+      //
+      navigate('/');
     } catch (error) {
       console.log('error:', error);
     }
