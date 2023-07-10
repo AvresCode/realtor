@@ -12,13 +12,13 @@ export default function Header() {
   }
 
   return (
-    <div className="bg-slate-100 border-b shadow-md sticky top-0 z-50">
+    <div className="bg-white border-b shadow-md sticky top-0 z-50">
       <header className="flex justify-between items-center  px-3 max-w-6xl mx-auto">
         <div>
           <img
             src="./realestate.png"
             alt="home"
-            className=" h-20 cursor-pointer rounded-md"
+            className=" h-16 cursor-pointer rounded-md"
             onClick={() => navigate('/')}
           />
         </div>
