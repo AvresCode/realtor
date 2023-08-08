@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.autofill-bg-fix:-webkit-autofill {
+  background: #fff !important;
+}
+
 body {
   /* background-color: #faf6ff; */
   @apply bg-gradient-to-r from-violet-100 to-orange-50;

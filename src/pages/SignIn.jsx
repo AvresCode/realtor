@@ -59,7 +59,7 @@ export default function SignIn() {
               placeholder="Email Address"
               value={email}
               onChange={onChange}
-              className="w-full px-4 py-2 text-xl text-gray-700 transition ease-in-out bg-white border-gray-300 rounded-md mb-6"
+              className="w-full px-4 py-2 text-xl text-gray-700 transition ease-in-out bg-white border-gray-300 rounded-md mb-6 autofill-bg-fix"
             />
             <div className="relative mb-6">
               <input
@@ -68,7 +68,7 @@ export default function SignIn() {
                 placeholder="Password"
                 value={password}
                 onChange={onChange}
-                className="w-full px-4 py-2 text-xl text-gray-700 transition ease-in-out bg-white border-gray-300 rounded-md"
+                className="w-full px-4 py-2 text-xl text-gray-700 transition ease-in-out bg-white border-gray-300 rounded-md focus:bg-white autofill-bg-fix"
               />
               {showPassword ? (
                 <AiFillEyeInvisible
