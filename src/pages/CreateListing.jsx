@@ -32,7 +32,7 @@ export default function CreateListing() {
     <main className="max-w-md px-2 my-16 mx-auto">
       <h1 className="text-3xl text-center mt-6 font-bold">Create a Listing</h1>
       <form>
-        <p className="text-lg mt-6 font-semibold">Sell / Rent</p>
+        <p className="text-lg mt-6 font-semibold mb-2">Sell / Rent</p>
         <div className="flex">
           <button
             type="button"
@@ -61,7 +61,7 @@ export default function CreateListing() {
             rent
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Name</p>
+        <p className="text-lg mt-6 font-semibold mb-2">Name</p>
         <input
           type="text"
           id="name"
@@ -75,7 +75,7 @@ export default function CreateListing() {
         />
         <div className="flex space-x-6 mb-6">
           <div>
-            <p className="text-lg font-semibold">Beds</p>
+            <p className="text-lg font-semibold mb-2">Beds</p>
             <input
               type="number"
               id="bedrooms"
@@ -88,7 +88,7 @@ export default function CreateListing() {
             />
           </div>
           <div>
-            <p className="text-lg font-semibold">Baths</p>
+            <p className="text-lg font-semibold mb-2">Baths</p>
             <input
               type="number"
               id="bathrooms"
@@ -101,7 +101,7 @@ export default function CreateListing() {
             />
           </div>
         </div>
-        <p className="text-lg mt-6 font-semibold">Parking spot</p>
+        <p className="text-lg mt-6 font-semibold mb-2">Parking spot</p>
         <div className="flex">
           <button
             type="button"
@@ -126,7 +126,7 @@ export default function CreateListing() {
             no
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Furnished</p>
+        <p className="text-lg mt-6 font-semibold mb-2">Furnished</p>
         <div className="flex">
           <button
             type="button"
@@ -151,7 +151,7 @@ export default function CreateListing() {
             no
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Address</p>
+        <p className="text-lg mt-6 font-semibold mb-2">Address</p>
         <textarea
           type="text"
           id="address"
@@ -161,7 +161,7 @@ export default function CreateListing() {
           required
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />
-        <p className="text-lg font-semibold">Description</p>
+        <p className="text-lg font-semibold mb-2">Description</p>
         <textarea
           type="text"
           id="description"
@@ -171,7 +171,7 @@ export default function CreateListing() {
           required
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />
-        <p className="text-lg font-semibold">Offer</p>
+        <p className="text-lg font-semibold mb-2">Offer</p>
         <div className="flex mb-6">
           <button
             type="button"
@@ -198,7 +198,7 @@ export default function CreateListing() {
         </div>
         <div className="flex items-center mb-6">
           <div className="">
-            <p className="text-lg font-semibold">Regular price</p>
+            <p className="text-lg font-semibold mb-2">Regular price</p>
             <div className="flex w-full justify-center items-center space-x-6">
               <input
                 type="number"
@@ -221,7 +221,7 @@ export default function CreateListing() {
         {offer && (
           <div className="flex items-center mb-6">
             <div className="">
-              <p className="text-lg font-semibold">Discounted price</p>
+              <p className="text-lg font-semibold mb-2">Discounted price</p>
               <div className="flex w-full justify-center items-center space-x-6">
                 <input
                   type="number"
@@ -245,7 +245,7 @@ export default function CreateListing() {
           </div>
         )}
         <div className="mb-6">
-          <p className="text-lg font-semibold">Images</p>
+          <p className="text-lg font-semibold mb-2">Images</p>
           <p className="text-gray-600">
             The first image will be the cover (max 6)
           </p>
