@@ -46,6 +46,8 @@ export default function CreateListing() {
     if (!e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
+        // If boolean is defined and not null, it will be used as the value for the property.
+        // If boolean is null or undefined, it will use e.target.value as the value for the property.
         [e.target.id]: boolean ?? e.target.value,
       }));
     }
