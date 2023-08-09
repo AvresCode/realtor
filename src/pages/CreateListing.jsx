@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 export default function CreateListing() {
+  const [geolocEnabled, setGeolocEnabaled] = useState(true);
+
   const [formData, setFormData] = useState({
     type: 'rent',
     name: '',
@@ -13,6 +15,8 @@ export default function CreateListing() {
     offer: false,
     regularPrice: 0,
     discountedPrice: 0,
+    latitude: 0,
+    longitude: 0,
   });
   const {
     type,
@@ -26,6 +30,8 @@ export default function CreateListing() {
     offer,
     regularPrice,
     discountedPrice,
+    latitude,
+    longitude,
   } = formData;
   function onChange(e) {
     let boolean = null;
@@ -52,10 +58,14 @@ export default function CreateListing() {
       }));
     }
   }
+
+  function onSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <main className="max-w-md px-2 my-16 mx-auto">
       <h1 className="text-3xl text-center mt-6 font-bold">Create a Listing</h1>
-      <form>
+      <form onSubmit={onSubmit}>
         <p className="text-lg mt-6 font-semibold mb-2">Sell / Rent</p>
         <div className="flex">
           <button
@@ -185,6 +195,36 @@ export default function CreateListing() {
           required
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />
+        {!geolocEnabled && (
+          <div className="flex space-x-6 mb-6">
+            <div>
+              <p className="text-lg font-semibold mb-2">Latitude</p>
+              <input
+                type="number"
+                id="latitude"
+                value={latitude}
+                onChange={onChange}
+                required
+                min="-90"
+                max="90"
+                className="w-full mr-3 px-7 py-3 font-medium text-sm text-center uppercase shadow-md border-gray-300 rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
+              />
+            </div>
+            <div>
+              <p className="text-lg font-semibold mb-2">Longitude</p>
+              <input
+                type="number"
+                id="longitude"
+                value={longitude}
+                onChange={onChange}
+                required
+                min="-180"
+                max="180"
+                className="w-full mr-3 px-7 py-3 font-medium text-sm text-center uppercase shadow-md border-gray-300 rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
+              />
+            </div>
+          </div>
+        )}
         <p className="text-lg font-semibold mb-2">Description</p>
         <textarea
           type="text"
