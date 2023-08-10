@@ -4,11 +4,12 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from 'firebase/storage';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 export default function CreateListing() {
   const [geolocEnabled, setGeolocEnabaled] = useState(true);
@@ -156,7 +157,21 @@ export default function CreateListing() {
       toast.error('Images not uploaded');
       return;
     });
-    console.log('images:', imgUrls);
+    // console.log('images:', imgUrls);
+    const formDataCopy = {
+      ...formData,
+      imgUrls,
+      geolocation,
+      timestamp: serverTimestamp(),
+    };
+    delete formDataCopy.images;
+    !formDataCopy.offer && delete formDataCopy.discountedPrice;
+    delete formDataCopy.latitude;
+    delete formDataCopy.longitude;
+    await addDoc(collection(db, 'listings'), formDataCopy);
+    setLoading(false);
+    toast.success('Listing is created');
+    console.log('new listing:', formDataCopy);
   }
 
   if (loading) {
