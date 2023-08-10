@@ -10,10 +10,12 @@ import { useState } from 'react';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateListing() {
   const [geolocEnabled, setGeolocEnabaled] = useState(true);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     type: 'rent',
     name: '',
@@ -75,7 +77,7 @@ export default function CreateListing() {
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    if (discountedPrice >= regularPrice) {
+    if (parseInt(discountedPrice) >= parseInt(regularPrice)) {
       setLoading(false);
       toast.error('Discount price needs to be lower than regular price');
       return;
@@ -168,10 +170,11 @@ export default function CreateListing() {
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
     delete formDataCopy.latitude;
     delete formDataCopy.longitude;
-    await addDoc(collection(db, 'listings'), formDataCopy);
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
     setLoading(false);
     toast.success('Listing is created');
-    console.log('new listing:', formDataCopy);
+    // console.log('new listing:', formDataCopy);
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   }
 
   if (loading) {
