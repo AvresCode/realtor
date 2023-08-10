@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { updateProfile } from 'firebase/auth';
-import { doc, updateDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { FcHome } from 'react-icons/fc';
 export default function Profile() {
@@ -15,6 +23,8 @@ export default function Profile() {
 
   const { name, email } = formData;
   const [changeDetails, setChangeDetails] = useState(false);
+  const [listings, setListings] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   function onChange(e) {
     setFormData((prevState) => ({
@@ -50,6 +60,26 @@ export default function Profile() {
     auth.signOut();
     navigate('/');
   };
+
+  useEffect(() => {
+    async function fetchUserListing() {
+      const listingRef = collection(db, 'listings');
+      const queryListing = query(
+        listingRef,
+        where('userRef', '==', auth.currentUser.uid),
+        orderBy('timestamp', 'desc')
+      );
+      const querySnap = await getDocs(queryListing);
+      let listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({ id: doc.id, data: doc.data() });
+      });
+      setListings(listings);
+      setLoading(false);
+      console.log('listings', listings);
+    }
+    fetchUserListing();
+  }, []);
 
   return (
     <>
