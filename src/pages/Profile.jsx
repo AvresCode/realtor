@@ -134,12 +134,12 @@ export default function Profile() {
             </Link>
           </button>
         </div>
-      </section>{' '}
+      </section>
       <div className="max-w-6xl px-3 mt-6 mx-auto">
         {!loading && listings.length > 0 && (
           <>
             <h2 className="text-2xl text-center font-semibold">My Listings</h2>
-            <ul>
+            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
               {listings.map((listing) => (
                 <ListingItem
                   key={listing.id}
