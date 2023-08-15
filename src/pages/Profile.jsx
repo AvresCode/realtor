@@ -11,6 +11,7 @@ import {
   query,
   updateDoc,
   where,
+  deleteDoc,
 } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { FcHome } from 'react-icons/fc';
@@ -61,6 +62,19 @@ export default function Profile() {
     auth.signOut();
     navigate('/');
   };
+  async function onDelete(listingID) {
+    if (window.confirm('Are you sure you want to delete?')) {
+      await deleteDoc(doc(db, 'listings', listingID));
+      const updatedListings = listings.filter(
+        (listing) => listing.id !== listingID
+      );
+      setListings(updatedListings);
+      toast.success('Listing deleted');
+    }
+  }
+  function onListingEdit(listingID) {
+    navigate(`/edit-listing/${listingID}`);
+  }
 
   useEffect(() => {
     async function fetchUserListing() {
@@ -149,6 +163,8 @@ export default function Profile() {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
+                  onDelete={() => onDelete(listing.id)}
+                  onListingEdit={() => onListingEdit(listing.id)}
                 />
               ))}
             </ul>
