@@ -151,7 +151,7 @@ export default function Profile() {
       </section>
       {/* this div fix the image ration problem but the size of div will be the same for all screens */}
       {/* <div className="flex justify-center items-center "> */}
-      <div className="max-w-6xl px-4 mt-6 mx-auto">
+      <div className="max-w-6xl px-4 my-12 mx-auto">
         {!loading && listings.length > 0 && (
           <>
             <h2 className="text-2xl text-center font-semibold mb-6">
