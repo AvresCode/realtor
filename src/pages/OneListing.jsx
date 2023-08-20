@@ -11,10 +11,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import { BsShareFill } from 'react-icons/bs';
 
 export default function OneListing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const params = useParams();
   useEffect(() => {
@@ -61,6 +63,23 @@ export default function OneListing() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div
+        className="fixed top-[15%] right-[5%] z-10 bg-orange-300 p-2 rounded-full cursor-pointer"
+        onClick={() => {
+          navigator.clipboard.writeText(window.location.href);
+          setLinkCopied(true);
+          setTimeout(() => {
+            setLinkCopied(false);
+          }, 3000);
+        }}
+      >
+        <BsShareFill />
+      </div>
+      {linkCopied && (
+        <p className="fixed top-[22%] right-[3%]  rounded-md bg-white z-10 p-2 text-sm font-semibold">
+          Link Copied
+        </p>
+      )}
     </main>
   );
 }
