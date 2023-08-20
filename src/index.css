@@ -10,3 +10,15 @@ body {
   /* background-color: #faf6ff; */
   @apply bg-gradient-to-r from-violet-100 to-orange-50;
 }
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: antiquewhite;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: antiquewhite !important;
+}
+/* .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: antiquewhite !important;
+} */
