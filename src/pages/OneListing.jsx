@@ -14,11 +14,14 @@ import 'swiper/css/effect-fade';
 import { BsShareFill } from 'react-icons/bs';
 import { MdKingBed } from 'react-icons/md';
 import { FaBath, FaParking, FaMapMarkerAlt, FaChair } from 'react-icons/fa';
+import { auth } from '../firebase';
+import ContactForm from '../components/ContactForm';
 
 export default function OneListing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   const params = useParams();
   useEffect(() => {
@@ -82,7 +85,7 @@ export default function OneListing() {
           Link Copied
         </p>
       )}
-      <div className="m-10 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5 ">
+      <div className="my-14 mx-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5 ">
         <div className=" w-full my-6">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - ${' '}
@@ -99,12 +102,12 @@ export default function OneListing() {
             <FaMapMarkerAlt className=" text-lg mr-1" />
             {listing.address}
           </p>
-          <div className="flex justify-start items-center space-x-4 w-[75%] my-6">
-            <p className="bg-rose-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md">
+          <div className="flex justify-start items-center space-x-4 w-[85%] my-6">
+            <p className=" w-full max-w-[200px] b bg-amber-600 rounded-full p-1  text-center text-white font-semibold shadow-md">
               {listing.type === 'rent' ? 'Rent' : 'Sale'}
             </p>
             {listing.offer && (
-              <p className="w-full max-w-[200px] bg-teal-700 rounded-md p-1 text-white text-center font-semibold shadow-md">
+              <p className="w-full max-w-[200px]  bg-teal-700 rounded-full p-1 text-center text-white font-semibold shadow-md">
                 ${+listing.regularPrice - +listing.discountedPrice} discount
               </p>
             )}
@@ -113,7 +116,7 @@ export default function OneListing() {
             <span className="font-semibold">Description - </span>
             {listing.description}
           </p>
-          <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold">
+          <ul className="flex items-center space-x-6 text-sm font-semibold">
             <li className="flex items-center whitespace-nowrap">
               <MdKingBed className="text-lg mr-1" />
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : '1 Bed'}
@@ -131,6 +134,14 @@ export default function OneListing() {
               {listing.furnished ? 'Furnished' : 'Not furnished'}
             </li>
           </ul>
+          {listing.userRef !== auth.currentUser?.uid && !showContactForm && (
+            <button onClick={() => setShowContactForm(true)}>
+              Contact landlord
+            </button>
+          )}
+          {showContactForm && (
+            <ContactForm userRef={listing.userRef} listing={listing} />
+          )}
         </div>
         <div className="bg-blue-300 w-full h-[200px] lg-[400px] z-10 overflow-x-hidden"></div>
       </div>
