@@ -135,7 +135,10 @@ export default function OneListing() {
             </li>
           </ul>
           {listing.userRef !== auth.currentUser?.uid && !showContactForm && (
-            <button onClick={() => setShowContactForm(true)}>
+            <button
+              onClick={() => setShowContactForm(true)}
+              className="my-8 px-7 py-3  bg-violet-700 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-violet-800 hover:shadow-lg focus:bg-violet-900 focus:shadow-lg w-full text-center transition duration-150 ease-in-out "
+            >
               Contact landlord
             </button>
           )}

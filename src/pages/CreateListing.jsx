@@ -444,7 +444,7 @@ export default function CreateListing() {
         </div>
         <button
           type="submit"
-          className="mb-6 w-full px-7 py-3  bg-violet-700 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-violet-800 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-violet-900 active:shadow-lg transition duration-150 ease-in-out"
+          className="mb-6 w-full px-7 py-3  bg-violet-700 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-violet-800 hover:shadow-lg  active:bg-violet-900 active:shadow-lg transition duration-150 ease-in-out"
         >
           Create Listing
         </button>
