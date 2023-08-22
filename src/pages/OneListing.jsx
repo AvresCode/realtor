@@ -117,7 +117,7 @@ export default function OneListing() {
             <span className="font-semibold">Description - </span>
             {listing.description}
           </p>
-          <ul className="flex items-center space-x-6 text-sm font-semibold">
+          <ul className="flex items-center space-x-3 text-sm font-semibold md:space-x-6">
             <li className="flex items-center whitespace-nowrap">
               <MdKingBed className="text-lg mr-1" />
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : '1 Bed'}
