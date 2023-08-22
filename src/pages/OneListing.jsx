@@ -148,7 +148,7 @@ export default function OneListing() {
           )}
         </div>
         <div className="w-full my-6">
-          <Map position={[listing.geolocation.lat, listing.geolocation.lng]} />
+          <Map listing={listing} />
         </div>
       </div>
     </main>
