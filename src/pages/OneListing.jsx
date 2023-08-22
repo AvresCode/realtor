@@ -16,6 +16,7 @@ import { MdKingBed } from 'react-icons/md';
 import { FaBath, FaParking, FaMapMarkerAlt, FaChair } from 'react-icons/fa';
 import { auth } from '../firebase';
 import ContactForm from '../components/ContactForm';
+import Map from '../components/Map';
 
 export default function OneListing() {
   const [listing, setListing] = useState(null);
@@ -85,8 +86,8 @@ export default function OneListing() {
           Link Copied
         </p>
       )}
-      <div className="my-14 mx-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5 ">
-        <div className=" w-full my-6">
+      <div className="my-14 mx-4 flex flex-col lg:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5 ">
+        <div className="w-full my-6">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - ${' '}
             {listing.offer
@@ -146,7 +147,9 @@ export default function OneListing() {
             <ContactForm userRef={listing.userRef} listing={listing} />
           )}
         </div>
-        <div className="bg-blue-300 w-full h-[200px] lg-[400px] z-10 overflow-x-hidden"></div>
+        <div className="w-full my-6">
+          <Map position={[listing.geolocation.lat, listing.geolocation.lng]} />
+        </div>
       </div>
     </main>
   );
