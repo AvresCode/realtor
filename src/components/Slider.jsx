@@ -10,10 +10,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import { useNavigate } from 'react-router';
 
 export default function Slider() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchListings() {
@@ -51,7 +53,7 @@ export default function Slider() {
         slidesPerView={1}
         effect={'fade'}
         autoplay={{
-          delay: 4000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -62,19 +64,37 @@ export default function Slider() {
         modules={[EffectFade, Autoplay, Pagination, Navigation]}
       >
         {listings &&
-          listings.map((listing, index) => (
-            <SwiperSlide key={index}>
+          listings.map(({ data, id }) => (
+            <SwiperSlide
+              key={id}
+              onClick={() => navigate(`/category/${data.type}/${id}`)}
+            >
               <div
-                key={index}
+                key={id}
                 style={{
-                  background: `url(${listing.data.imgUrls[0]}) center no-repeat`,
+                  background: `url(${data.imgUrls[0]}) center no-repeat`,
                   backgroundSize: 'cover',
                 }}
-                className="relative w-full overflow-hidden h-[300px] md:h-[400px]"
+                className="relative w-full overflow-hidden h-[300px] md:h-[400px] cursor-pointer"
               ></div>
+              <p className="absolute left-2 top-1 rounded-br-3xl text-white font-medium bg-violet-900 p-2 pr-4 shadow-lg">
+                {data.name}
+              </p>
+              <p className="absolute left-2 bottom-1 rounded-tr-3xl text-white font-medium bg-yellow-700 p-2 pr-4 shadow-lg min-w-[130px]">
+                ${' '}
+                {/* {data.offer
+                  ? data.discountedPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                  : data.regularPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} */}
+                {data.discountedPrice ?? data.regularPrice}
+                {data.type === 'rent' ? ' / month' : ''}
+              </p>
             </SwiperSlide>
           ))}
-      </Swiper>{' '}
+      </Swiper>
     </>
   );
 }

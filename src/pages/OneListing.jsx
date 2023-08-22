@@ -47,7 +47,7 @@ export default function OneListing() {
         slidesPerView={1}
         effect={'fade'}
         autoplay={{
-          delay: 4000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -104,11 +104,11 @@ export default function OneListing() {
             {listing.address}
           </p>
           <div className="flex justify-start items-center space-x-4 w-[85%] my-6">
-            <p className=" w-full max-w-[200px] b bg-amber-600 rounded-full p-1  text-center text-white font-semibold shadow-md">
+            <p className=" w-full max-w-[200px] b bg-yellow-700 rounded-full p-1  text-center text-white font-semibold shadow-md">
               {listing.type === 'rent' ? 'Rent' : 'Sale'}
             </p>
             {listing.offer && (
-              <p className="w-full max-w-[200px]  bg-teal-700 rounded-full p-1 text-center text-white font-semibold shadow-md">
+              <p className="w-full max-w-[200px]  bg-violet-900 rounded-full p-1 text-center text-white font-semibold shadow-md">
                 ${+listing.regularPrice - +listing.discountedPrice} discount
               </p>
             )}
