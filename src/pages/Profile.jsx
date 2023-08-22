@@ -91,7 +91,7 @@ export default function Profile() {
       });
       setListings(listings);
       setLoading(false);
-      console.log('listings', listings);
+      // console.log('listings', listings);
     }
     fetchUserListing();
   }, []);

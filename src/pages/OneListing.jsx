@@ -32,7 +32,7 @@ export default function OneListing() {
       if (docSnap.exists()) {
         setListing(docSnap.data());
         setLoading(false);
-        console.log('one listing:', docSnap.data());
+        // console.log('one listing:', docSnap.data());
       }
     }
     fetchListing();
@@ -70,7 +70,7 @@ export default function OneListing() {
         ))}
       </Swiper>
       <div
-        className="fixed top-[15%] right-[5%] z-10 bg-orange-300 p-2 rounded-full cursor-pointer"
+        className="absolute top-[15%] right-[5%] z-10 bg-orange-300 p-2 rounded-full cursor-pointer"
         onClick={() => {
           navigator.clipboard.writeText(window.location.href);
           setLinkCopied(true);
@@ -82,7 +82,7 @@ export default function OneListing() {
         <BsShareFill />
       </div>
       {linkCopied && (
-        <p className="fixed top-[22%] right-[3%]  rounded-md bg-white z-10 p-2 text-sm font-semibold">
+        <p className="absolute top-[22%] right-[3%]  rounded-md bg-white z-10 p-2 text-sm font-semibold">
           Link Copied
         </p>
       )}
