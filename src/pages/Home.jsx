@@ -16,11 +16,11 @@ export default function Home() {
   const [listingsOffers, setListingsOffers] = useState(null);
 
   useEffect(() => {
-    async function fetchOfferredListings() {
+    async function fetchListings() {
       try {
-        const offersRef = collection(db, 'listings');
+        const listingRef = collection(db, 'listings');
         const q = query(
-          offersRef,
+          listingRef,
           where('offer', '==', true),
           orderBy('timestamp', 'desc'),
           limit(4)
@@ -31,12 +31,12 @@ export default function Home() {
           return listings.push({ id: doc.id, data: doc.data() });
         });
         setListingsOffers(listings);
-        console.log('OFFERS', listings);
+        // console.log('OFFERS', listings);
       } catch (error) {
         console.log(error);
       }
     }
-    fetchOfferredListings();
+    fetchListings();
   }, []);
 
   return (
