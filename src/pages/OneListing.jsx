@@ -17,6 +17,7 @@ import { FaBath, FaParking, FaMapMarkerAlt, FaChair } from 'react-icons/fa';
 import { auth } from '../firebase';
 import ContactForm from '../components/ContactForm';
 import Map from '../components/Map';
+import { toast } from 'react-toastify';
 
 export default function OneListing() {
   const [listing, setListing] = useState(null);
@@ -27,12 +28,16 @@ export default function OneListing() {
   const params = useParams();
   useEffect(() => {
     async function fetchListing() {
-      const docRef = doc(db, 'listings', params.listingId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setListing(docSnap.data());
-        setLoading(false);
-        // console.log('one listing:', docSnap.data());
+      try {
+        const docRef = doc(db, 'listings', params.listingId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setListing(docSnap.data());
+          setLoading(false);
+          // console.log('one listing:', docSnap.data());
+        }
+      } catch (error) {
+        toast.error('Something went wrong with fetching');
       }
     }
     fetchListing();
