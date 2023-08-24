@@ -22,3 +22,13 @@ body {
 /* .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: antiquewhite !important;
 } */
+
+/* remove scrollbar for chrome */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* remove scrollbar for firefox */
+html {
+  scrollbar-width: none;
+}
