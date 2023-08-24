@@ -4,6 +4,7 @@ import {
   limit,
   orderBy,
   query,
+  startAfter,
   where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -15,6 +16,7 @@ import { toast } from 'react-toastify';
 export default function Offers() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchedListing] = useState(true);
   useEffect(() => {
     async function fetchListings() {
       try {
@@ -23,12 +25,14 @@ export default function Offers() {
           listingRef,
           where('offer', '==', true),
           orderBy('timestamp', 'desc'),
-          limit(4)
+          limit(8)
         );
 
-        const docSnap = await getDocs(q);
+        const querySnap = await getDocs(q);
+        const lastListing = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchedListing(lastListing);
         const listings = [];
-        docSnap.forEach((doc) => {
+        querySnap.forEach((doc) => {
           return listings.push({ id: doc.id, data: doc.data() });
         });
         setListings(listings);
@@ -40,21 +44,60 @@ export default function Offers() {
     }
     fetchListings();
   }, []);
+
+  async function fetchMoreListings() {
+    try {
+      const listingRef = collection(db, 'listings');
+      const q = query(
+        listingRef,
+        where('offer', '==', true),
+        orderBy('timestamp', 'desc'),
+        startAfter(lastFetchedListing),
+        limit(4)
+      );
+
+      const querySnap = await getDocs(q);
+      const lastListing = querySnap.docs[querySnap.docs.length - 1];
+      setLastFetchedListing(lastListing);
+      const listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({ id: doc.id, data: doc.data() });
+      });
+      setListings((prevState) => [...prevState, ...listings]);
+      setLoading(false);
+      console.log('listings', listings);
+    } catch (error) {
+      toast.error('Something went wrong with fetching the listings');
+    }
+  }
+
   return (
-    <div className="max-w-6xl mx-auto px-3">
-      <h1 className="text-3xl text-center mt-6 font-bold mb-6">Offers</h1>
+    <div className="max-w-6xl mx-auto px-3 pt-4 mt-10 mb-52">
+      <h1 className="text-3xl text-center my-10 font-bold ">Offers</h1>
       {loading ? (
         <Spinner />
       ) : listings && listings.length > 0 ? (
-        <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
-          {listings.map((listing) => (
-            <ListingItem
-              key={listing.id}
-              id={listing.id}
-              listing={listing.data}
-            />
-          ))}
-        </ul>
+        <div>
+          <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
+            {listings.map((listing) => (
+              <ListingItem
+                key={listing.id}
+                id={listing.id}
+                listing={listing.data}
+              />
+            ))}
+          </ul>
+          {lastFetchedListing && (
+            <div className="flex justify-center items-center">
+              <button
+                onClick={() => fetchMoreListings()}
+                className="bg-white px-3 py-1.5 text-gray-700 border border-gray-300 mb-6 mt-6 hover:border-slate-600 rounded transition duration-150 ease-in-out"
+              >
+                Load more
+              </button>
+            </div>
+          )}
+        </div>
       ) : (
         <p>No Listings with Offers Found</p>
       )}
