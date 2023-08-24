@@ -10,28 +10,33 @@ import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import Spinner from '../components/Spinner';
 import ListingItem from '../components/ListingItem';
+import { toast } from 'react-toastify';
 
 export default function Offers() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchListings() {
-      const listingRef = collection(db, 'listings');
-      const q = query(
-        listingRef,
-        where('offer', '==', true),
-        orderBy('timestamp', 'desc'),
-        limit(4)
-      );
+      try {
+        const listingRef = collection(db, 'listings');
+        const q = query(
+          listingRef,
+          where('offer', '==', true),
+          orderBy('timestamp', 'desc'),
+          limit(4)
+        );
 
-      const docSnap = await getDocs(q);
-      const listings = [];
-      docSnap.forEach((doc) => {
-        return listings.push({ id: doc.id, data: doc.data() });
-      });
-      setListings(listings);
-      setLoading(false);
-      console.log('listings', listings);
+        const docSnap = await getDocs(q);
+        const listings = [];
+        docSnap.forEach((doc) => {
+          return listings.push({ id: doc.id, data: doc.data() });
+        });
+        setListings(listings);
+        setLoading(false);
+        console.log('listings', listings);
+      } catch (error) {
+        toast.error('Something went wrong with fetching the listings');
+      }
     }
     fetchListings();
   }, []);
