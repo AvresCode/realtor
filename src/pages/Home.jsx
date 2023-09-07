@@ -150,7 +150,7 @@ export default function Home() {
                 />
               ))}
             </ul>{' '}
-            <Link to="/category/rent">
+            <Link to="/category/sale">
               <p className="p-2  text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
                 Explore More Available Sales
               </p>
