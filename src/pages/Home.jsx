@@ -99,9 +99,9 @@ export default function Home() {
       <Slider />
       <div className="max-w-6xl mx-auto pt-4 space-y-40 mt-10 mb-52">
         {listingsOffers && listingsOffers.length > 0 && (
-          <div className="mx-2 mt-10">
+          <div className="mx-10 mt-10">
             <h2 className="py-5 text-2xl font-semibold">Recent Offers</h2>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {listingsOffers.map((listing) => (
                 <ListingItem
                   key={listing.id}
@@ -118,11 +118,11 @@ export default function Home() {
           </div>
         )}{' '}
         {rentListings && rentListings.length > 0 && (
-          <div className="mx-2">
+          <div className="mx-10">
             <h2 className="py-5 text-2xl font-semibold">
               Renting Opportunities
             </h2>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {rentListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
@@ -139,9 +139,9 @@ export default function Home() {
           </div>
         )}
         {saleListings && saleListings.length > 0 && (
-          <div className="mx-2">
+          <div className="mx-10">
             <h2 className="py-5 text-2xl font-semibold">Sale Opportunities</h2>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {saleListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
