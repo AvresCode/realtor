@@ -38,7 +38,7 @@ export default function ContactForm({ userRef, listing }) {
           >
             <button
               type="button"
-              className="px-7 py-3 bg-violet-700 text-white rounded text-sm uppercase shadow-md hover:bg-violet-800 hover:shadow-lg focus:bg-violet-900 focus:shadow-lg active:bg-violet-900  active:shadow-lg transition duration-150 ease-in-out w-full text-center mb-6"
+              className="px-7 py-3 bg-[#275576ff] text-white rounded text-sm uppercase shadow-md hover:bg-[#1f425cff]  hover:shadow-lg  active:bg-[#142c3dff]   active:shadow-lg transition duration-150 ease-in-out w-full text-center mb-6"
             >
               Send message
             </button>

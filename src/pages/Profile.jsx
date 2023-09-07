@@ -138,7 +138,7 @@ export default function Profile() {
               </p>
             </div>
           </form>
-          <button className="w-full bg-violet-700  text-white py-3 px-6 text-sm font-semibold rounded shadow-md uppercase hover:bg-violet-800 transition duration-150 ease-in-out hover:shadow-lg active:bg-violet-900">
+          <button className="w-full bg-[#275576ff]  text-white py-3 px-6 text-sm font-semibold rounded shadow-md uppercase hover:bg-[#1f425cff] transition duration-150 ease-in-out hover:shadow-lg active:bg-[#142c3dff]">
             <Link
               to="/create-listing"
               className="flex justify-center items-center"

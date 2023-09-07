@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <>
       <Slider />
-      <div className="max-w-6xl mx-auto pt-4 space-y-16 mt-10 mb-52">
+      <div className="max-w-6xl mx-auto pt-4 space-y-40 mt-10 mb-52">
         {listingsOffers && listingsOffers.length > 0 && (
           <div className="mx-2 mt-10">
             <h2 className="py-5 text-2xl font-semibold">Recent Offers</h2>

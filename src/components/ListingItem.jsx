@@ -14,7 +14,7 @@ export default function ListingItem({ listing, id, onDelete, onListingEdit }) {
           src={listing.imgUrls[0]}
         />
         <Moment
-          className="absolute top-2 left-2 bg-violet-700 text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg"
+          className="absolute top-2 left-2 bg-[#c4a54fff] text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg"
           fromNow
         >
           {listing.timestamp?.toDate()}
