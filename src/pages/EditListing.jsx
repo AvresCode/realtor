@@ -224,7 +224,7 @@ export default function EditListing() {
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               type === 'rent'
                 ? 'bg-white text-black'
-                : 'bg-slate-600 text-white'
+                : 'bg-[#275576ff] text-white'
             }`}
           >
             sell
@@ -237,7 +237,7 @@ export default function EditListing() {
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               type === 'sale'
                 ? 'bg-white text-black'
-                : 'bg-slate-600 text-white'
+                : 'bg-[#275576ff] text-white'
             }`}
           >
             rent
@@ -291,7 +291,7 @@ export default function EditListing() {
             value={true}
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              !parking ? 'bg-white text-black' : 'bg-slate-600 text-white'
+              !parking ? 'bg-white text-black' : 'bg-[#275576ff] text-white'
             }`}
           >
             Yes
@@ -302,7 +302,7 @@ export default function EditListing() {
             value={false}
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              parking ? 'bg-white text-black' : 'bg-slate-600 text-white'
+              parking ? 'bg-white text-black' : 'bg-[#275576ff] text-white'
             }`}
           >
             no
@@ -316,7 +316,7 @@ export default function EditListing() {
             value={true}
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              !furnished ? 'bg-white text-black' : 'bg-slate-600 text-white'
+              !furnished ? 'bg-white text-black' : 'bg-[#275576ff] text-white'
             }`}
           >
             yes
@@ -327,7 +327,7 @@ export default function EditListing() {
             value={false}
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              furnished ? 'bg-white text-black' : 'bg-slate-600 text-white'
+              furnished ? 'bg-white text-black' : 'bg-[#275576ff] text-white'
             }`}
           >
             no
@@ -391,7 +391,7 @@ export default function EditListing() {
             value={true}
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              !offer ? 'bg-white text-black' : 'bg-slate-600 text-white'
+              !offer ? 'bg-white text-black' : 'bg-[#275576ff] text-white'
             }`}
           >
             yes
@@ -402,7 +402,7 @@ export default function EditListing() {
             value={false}
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              offer ? 'bg-white text-black' : 'bg-slate-600 text-white'
+              offer ? 'bg-white text-black' : 'bg-[#275576ff] text-white'
             }`}
           >
             no
@@ -473,7 +473,7 @@ export default function EditListing() {
         </div>
         <button
           type="submit"
-          className="mb-6 w-full px-7 py-3  bg-violet-700 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-violet-800 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-violet-900 active:shadow-lg transition duration-150 ease-in-out"
+          className="mb-6 w-full px-7 py-3  bg-[#c4a54fff] text-white font-semibold text-sm uppercase rounded shadow-md hover:bg-[#b8973dff] hover:shadow-lg  transition duration-150 ease-in-out"
         >
           Edit Listing
         </button>

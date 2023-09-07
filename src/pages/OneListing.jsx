@@ -92,7 +92,7 @@ export default function OneListing() {
         </p>
       )}
       <div className="my-14 mx-4 flex flex-col lg:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5 ">
-        <div className="w-full my-6">
+        <div className="w-full my-6 text-center">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - ${' '}
             {listing.offer
@@ -109,11 +109,11 @@ export default function OneListing() {
             {listing.address}
           </p>
           <div className="flex justify-start items-center space-x-4 w-[85%] my-6">
-            <p className=" w-full max-w-[200px] b bg-[#b8973dff]  rounded-full p-1  text-center text-white font-semibold shadow-md">
+            <p className=" w-full max-w-[200px] b bg-[#b8973dff]   p-1  text-center text-white font-semibold shadow-md">
               {listing.type === 'rent' ? 'Rent' : 'Sale'}
             </p>
             {listing.offer && (
-              <p className="w-full max-w-[200px] bg-[#275576ff]  rounded-full p-1 text-center text-white font-semibold shadow-md">
+              <p className="w-full max-w-[200px] bg-[#275576ff]   p-1 text-center text-white font-semibold shadow-md">
                 ${+listing.regularPrice - +listing.discountedPrice} discount
               </p>
             )}
@@ -143,7 +143,7 @@ export default function OneListing() {
           {listing.userRef !== auth.currentUser?.uid && !showContactForm && (
             <button
               onClick={() => setShowContactForm(true)}
-              className="my-8 px-7 py-3  bg-[#275576ff]  text-white font-medium text-sm uppercase rounded shadow-md hover:bg-[#1f425cff] hover:shadow-lg focus:bg-[#142c3dff] focus:shadow-lg w-full text-center transition duration-150 ease-in-out "
+              className="my-8 mx-auto px-7 py-3 bg-[#275576ff]  text-white font-medium text-sm uppercase rounded shadow-md hover:bg-[#1f425cff] hover:shadow-lg focus:bg-[#142c3dff] focus:shadow-lg w-[70%] text-center transition duration-150 ease-in-out "
             >
               Contact landlord
             </button>

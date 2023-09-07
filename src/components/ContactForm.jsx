@@ -21,7 +21,7 @@ export default function ContactForm({ userRef, listing }) {
   return (
     <>
       {landlord && (
-        <div className="mt-8">
+        <div className="mt-8  ">
           <p>
             Message {landlord.name} for the {listing.name.toLowerCase()}:
           </p>
@@ -38,7 +38,7 @@ export default function ContactForm({ userRef, listing }) {
           >
             <button
               type="button"
-              className="px-7 py-3 bg-[#275576ff] text-white rounded text-sm uppercase shadow-md hover:bg-[#1f425cff]  hover:shadow-lg  active:bg-[#142c3dff]   active:shadow-lg transition duration-150 ease-in-out w-full text-center mb-6"
+              className="px-7 py-3 w-[70%] bg-[#275576ff] text-white rounded text-sm uppercase shadow-md hover:bg-[#1f425cff]  hover:shadow-lg  active:bg-[#142c3dff]   active:shadow-lg transition duration-150 ease-in-out text-center mb-6"
             >
               Send message
             </button>

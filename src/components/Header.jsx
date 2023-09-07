@@ -41,7 +41,7 @@ export default function Header() {
             <li
               className={`font-semibold py-3 cursor-pointer ${
                 pathMatchRoute('/') &&
-                'border-b-[3px] border-b-purple-400 text-black'
+                'border-b-[4px] border-b-[#b8973dff] text-black'
               }`}
               onClick={() => navigate('/')}
             >
@@ -50,7 +50,7 @@ export default function Header() {
             <li
               className={`font-semibold  py-3 cursor-pointer ${
                 pathMatchRoute('/offers') &&
-                'border-b-[3px] border-b-purple-400 text-black'
+                'border-b-[4px] border-b-[#b8973dff] text-black'
               }`}
               onClick={() => navigate('/offers')}
             >
@@ -59,7 +59,7 @@ export default function Header() {
             <li
               className={`font-semibold py-3 cursor-pointer ${
                 (pathMatchRoute('/sign-in') || pathMatchRoute('/myprofile')) &&
-                'border-b-[3px]  border-b-purple-400 text-black'
+                'border-b-[4px]  border-b-[#b8973dff] text-black'
               }`}
               onClick={() => navigate('/myprofile')}
             >
